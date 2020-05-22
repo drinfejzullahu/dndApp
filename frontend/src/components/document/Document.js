@@ -4,12 +4,33 @@ import Target from "../target/Target";
 export default function Document() {
   const [keywords, setKeywords] = useState([]);
 
-  const setItem = (value) => {
-    let localKeywords = [...keywords];
-    if (value) localKeywords.push(value);
+  const handleClick = (keyword) => {
+    let localKeywords = keywords.filter((k) => k !== keyword);
     setKeywords(localKeywords);
   };
 
+  const setItem = (value, position) => {
+    console.log(position, "PS");
+
+    const data = {
+      value,
+      position,
+    };
+    if (keywords[position]) {
+      console.log(keywords[position].position, position, "SSS");
+
+      if (keywords[position].position === position) {
+      } else {
+        let localKeywords = [...keywords];
+        if (value) localKeywords.push(data);
+        setKeywords(localKeywords);
+      }
+    } else {
+      let localKeywords = [...keywords];
+      if (value) localKeywords.push(data);
+      setKeywords(localKeywords);
+    }
+  };
   console.log(keywords, "Document");
   return (
     <div>
@@ -22,7 +43,12 @@ export default function Document() {
       Letraset sheets containing Lorem Ipsum passages, and more recently with
       desktop publishing software like Aldus PageMaker including versions of
       Lorem Ipsum.
-      <Target setItem={setItem} />
+      <Target
+        handleClick={handleClick}
+        position={0}
+        setItem={setItem}
+        keyword={keywords[0]}
+      />
       Why do we use it? It is a long established fact that a reader will be
       distracted by the readable content of a page when looking at its layout.
       The point of using Lorem Ipsum is that it has a more-or-less normal
@@ -43,10 +69,21 @@ export default function Document() {
       45 BC. This book is a treatise on the theory of ethics, very popular
       during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor
       sit amet..", comes from a line in section 1.10.32.
-      <Target setItem={setItem} />
+      <Target
+        handleClick={handleClick}
+        position={1}
+        setItem={setItem}
+        keyword={keywords[1]}
+      />
       The standard chunk of Lorem Ipsum used since the 1500s is reproduced below
       for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus
       Bonorum et Malorum" by Cicero are also reproduced in their exact original
+      <Target
+        handleClick={handleClick}
+        position={2}
+        setItem={setItem}
+        keyword={keywords[2]}
+      />
       form, accompanied by English versions from the 1914 translation by H.
       Rackham.
     </div>

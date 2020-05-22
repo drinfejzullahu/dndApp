@@ -6,7 +6,7 @@ export default function VariableBlock(props) {
   const [{ isDragging }, drag] = useDrag({
     item: {
       type: ItemTypes.VARIABLE,
-      id: props.variable.id,
+      // id: props.variable.id,
       variable: props.variable.name,
     },
     collect: (monitor) => ({
@@ -24,7 +24,7 @@ export default function VariableBlock(props) {
           borderRadius: "25px",
           opacity: isDragging ? "0.5" : "1",
         }}
-        key={props.variable.id}
+        key={props.variable.name}
         ref={drag}
       >
         {props.variable.name}
