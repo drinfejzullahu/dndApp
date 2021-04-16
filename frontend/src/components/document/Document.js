@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import Target from "../target/Target";
+import React, { useState } from 'react';
+import Target from '../target/Target';
 
 export default function Document() {
   const [keywords, setKeywords] = useState([]);
@@ -10,14 +10,14 @@ export default function Document() {
   };
 
   const setItem = (value, position) => {
-    console.log(position, "PS");
+    console.log(position, 'PS');
 
     const data = {
       value,
       position,
     };
     if (keywords[position]) {
-      console.log(keywords[position].position, position, "SSS");
+      console.log(keywords[position].position, position, 'SSS');
 
       if (keywords[position].position === position) {
       } else {
@@ -31,7 +31,6 @@ export default function Document() {
       setKeywords(localKeywords);
     }
   };
-  console.log(keywords, "Document");
   return (
     <div>
       What is Lorem Ipsum? Lorem Ipsum is simply dummy text of the printing and
@@ -47,7 +46,7 @@ export default function Document() {
         handleClick={handleClick}
         position={0}
         setItem={setItem}
-        keyword={keywords[0]}
+        keyword={keywords?.find((keyword) => keyword.position === 0)}
       />
       Why do we use it? It is a long established fact that a reader will be
       distracted by the readable content of a page when looking at its layout.
@@ -73,7 +72,7 @@ export default function Document() {
         handleClick={handleClick}
         position={1}
         setItem={setItem}
-        keyword={keywords[1]}
+        keyword={keywords?.find((keyword) => keyword.position === 1)}
       />
       The standard chunk of Lorem Ipsum used since the 1500s is reproduced below
       for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus
@@ -82,7 +81,7 @@ export default function Document() {
         handleClick={handleClick}
         position={2}
         setItem={setItem}
-        keyword={keywords[2]}
+        keyword={keywords?.find((keyword) => keyword.position === 2)}
       />
       form, accompanied by English versions from the 1914 translation by H.
       Rackham.
